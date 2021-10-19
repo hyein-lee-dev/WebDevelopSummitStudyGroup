@@ -1,23 +1,11 @@
-// 초기화 로직은 이렇게 글로벌에 두지 말고 window.onload 안에 넣습니다.
-/*
-let UserList = null;
-
-window.onload = function() { 
-    // ...
-    UserList = [new Member(`test`,`1234!qwer`,`테스트다`)]; 
-    // ...
-}
-*/
-
 // 공통사항 : 파라메터 유효성 여부는 필수로 합니다. (특히 객체 내 프로퍼티들을 접근할 때)
 
-let UserList= [new Member(`test`,`1234!qwer`,`테스트다`)]
+let UserList = null;
 
 window.onload = function() {
+    UserList = [new Member(`test`,`1234!qwer`,`테스트다`)];
     document.getElementById(`create_account`).onclick = function() {
-        // 모든 줄 끝에 ; 를 붙이는 버릇을 들입니다.
-        // 변수는 반드시 적절한 스코프에서 let 또는 const 로 정의합니다.
-        forms = getJoinForms()
+        let forms = getJoinForms();
         initInputErrorforForm(forms)
         
         try {
@@ -43,16 +31,15 @@ window.onload = function() {
         let forms = getManageForms()
         initInputErrorforForm(forms)
         let inputId = forms.id.value
-        // 문자열이 어떤 건 `` 을 쓰고 어떤 건 "" 을 씁니다. 문제가 없다면 하나로 통일하세요.
-        if(inputId === "") {
+        if(inputId === ``) {
             setGuideText(forms.id, `검색할 아이디를 입력해주세요`, true)
             return;
         }
 
         let user = findUser(forms.id.value)
         if (user.idx === -1) {
-            forms.pw.value = ""
-            forms.nick.value = ""
+            forms.pw.value = ``
+            forms.nick.value = ``
             alert(`존재하지 않는 유저입니다. 아이디를 확인해주세요`)
             return;
         }
@@ -88,10 +75,7 @@ window.onload = function() {
             return;
         }
 
-        // 아래는 한 줄의 if문으로 처리 가능합니다.
-        // if ( true === confirm(`${forms.id.value}를 정말 삭제하시겠습니까?`) ) { ... }
-        let check = confirm(`${forms.id.value}를 정말 삭제하시겠습니까?`)
-        if(check){
+        if(true === confirm(`${forms.id.value}를 정말 삭제하시겠습니까?`)){
             UserList.splice(user.idx, 1)
             initInputForm(forms);
             alert(`${forms.id.value} 빠염!T^T`)
