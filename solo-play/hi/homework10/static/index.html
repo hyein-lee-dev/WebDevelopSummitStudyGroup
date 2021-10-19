@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WebDevelopSummit</title>
+    <link rel="stylesheet" href="myStyle.css">
+    <script src="Member.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <!-- Join Page -->
+    <div class = "main">
+        <h2>회원 가입</h2>
+        <form class="form-class" onsubmit="return false" action="#">
+            <div class="content-area">
+                <label class="input-label" for="id_join">ID</label>
+                <div class="input-area">
+                    <input class="input-class" type="text" placeholder="Please input ID" id="id_join">
+                    <div class="validation-hint">validation description</div>
+                </div>
+                
+            </div>
+            <div class="content-area">
+                <label class="input-label" for="pw_join">비밀번호</label>
+                <div class="input-area">
+                    <input class="input-class" type="password" placeholder="Please input Password" id="pw_join">
+                    <div class="validation-hint">validation description</div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <label class="input-label" for="nick_join">닉네임</label>
+                <div class="input-area">
+                    <input class="input-class" type="text" placeholder="Please input Nickname" id="nick_join">
+                    <div class="validation-hint">validation description</div>
+                </div>
+            </div>
+            <div class="content-area">
+                <button class="btn" type="submit" id="create_account">계정 생성</button>
+                <button class="btn" type="reset" id="init_join_form">입력 초기화</button>
+            </div>
+        </form>
+    </div>
+
+    <hr />
+    <!-- Admin Program -->
+    <div class = "main">
+        <h2>회원 관리 프로그램</h2>
+        <form class="form-class" onsubmit="return false" action="#">
+            <div class="content-area">
+                <label class="input-label" for="id_manage">ID</label>
+                <div class="input-area">
+                    <input class="input-class" type="text" placeholder="Please input ID" id="id_manage">
+                    <div class="validation-hint">validation description</div>
+                </div>
+            </div>
+            <div class="content-area">
+                <label class="input-label" for="pw_manage">비밀번호</label>
+                <div class="input-area">
+                    <input class="input-class" type="password" placeholder="Please input Password" id="pw_manage">
+                    <div class="validation-hint">validation description</div>
+                </div>
+            </div>
+            <div class="content-area">
+                <label class="input-label" for="nick_manage">닉네임</label>
+                <div class="input-area">
+                    <input class="input-class" type="text" placeholder="Please input Nickname" id="nick_manage">
+                    <div class="validation-hint">validation description</div>
+                </div>
+            </div>
+            <div class="content-area">
+                <button class="btn" type="submit" id="search_account">계정 검색</button>
+                <button class="btn" type="submit" id="update_account">정보 수정</button>
+                <button class="btn" type="submit" id="delete_account">계정 삭제</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

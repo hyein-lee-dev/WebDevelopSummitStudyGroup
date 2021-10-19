@@ -1,0 +1,103 @@
+/* https://coolors.co/011627-ff3366-2ec4b6-f6f7f8-20a4f3 */
+
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+
+:root {
+  --default-dark: #011627;
+  --emphasis-red: #ff3366;
+  --default-white: #f6f7f8;
+  --moderate-green: #2ec4b6;
+  --moderate-green-lite: #2ed0b6;
+  --moderate-blue: #20a4f3;
+}
+
+body {
+  margin: 30px;
+  background-color: var(--default-dark);
+  font-family: "Noto Serif KR", serif;
+  /* font-family: "Nanum Gothic", sans-serif; */
+  font-weight: 400;
+  color: var(--default-dark);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  /* font-family: "Nanum Myeongjo", serif; */
+  font-family: "Nanum Gothic", sans-serif;
+}
+.main {
+  padding: 5px 20px 10px 20px;
+  background-color: var(--default-white);
+}
+
+.form-class {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .form-class div {
+  padding: 5px;
+  width: 70%;
+} */
+
+.content-area {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 70%;
+  /* background-color: black; */
+}
+
+.input-label {
+  width: auto;
+}
+
+.input-area {
+  margin: 0px 0px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.validation-hint {
+  padding-top: 5px;
+  color: red;
+  font-size: 0.7rem;
+  visibility: hidden;
+}
+
+.input-class {
+  padding: 5px;
+  border: 0;
+  width: 50vw;
+  font-family: "Noto Serif KR", serif;
+  /* font-family: "Nanum Gothic", sans-serif; */
+}
+
+.btn {
+  appearance: none;
+
+  padding: 10px 20px;
+  border-radius: 10px;
+  border-color: transparent;
+  background-color: var(--moderate-green);
+
+  /* font-family: "Noto Serif KR", serif; */
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--default-white);
+}
+
+.btn:hover {
+  background-color: var(--moderate-green-lite);
+}
