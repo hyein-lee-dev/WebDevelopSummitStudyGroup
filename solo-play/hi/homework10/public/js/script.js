@@ -1,25 +1,23 @@
 // 공통사항 : 파라메터 유효성 여부는 필수로 합니다. (특히 객체 내 프로퍼티들을 접근할 때)
 
-let UserList = null;
+// let UserList = null;
 
 window.onload = function() {
-    UserList = [new Member(`test`,`1234!qwer`,`테스트다`)];
     document.getElementById(`create_account`).onclick = function() {
         let forms = getJoinForms();
         initInputErrorforForm(forms)
         
         try {
-            // 여러 파라메터가 있는 경우에는 객체 하나로 묶어서 넣도록 구현하는게 가독성/확장성에서 유리합니다.
-            // (Member 객체 생성 및 아래 setGuideText 등 다른 함수들에도 공통 적용)
-            /*
+            console.log(forms.id.value, "/", forms.pw.value, "/", forms.nick.value);
+            
+            //TODO : 멤버 생성대신에 요청보내기 !!!!!!!! (여기서부터) add api부터 테스트하고가자
             let person = new Member({
                 id : forms.id.value,
                 pw : forms.pw.value,
-                nickname: form.nick.value
+                nick: forms.nick.value
             });
-             */
-            let person = new Member(forms.id.value, forms.pw.value, forms.nick.value)
-            UserList.push(person)
+            
+            // UserList.push(person)
             alert(`${person.getId()} 계정이 생성되었습니다`)
         } catch(e) {
             handleInputErrorforForm(e, forms)
