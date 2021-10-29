@@ -3,7 +3,7 @@ const backendURL = `http://127.0.0.1:12345`;
 
 window.onload = function() {
     document.getElementById(`create_account`).onclick = function() {
-        let forms = getJoinForms();
+        let forms = getForms(`join`);
         initInputErrorforForm(forms)
         
         console.log(forms.id.value, "/", forms.pw.value, "/", forms.nick.value);
@@ -29,7 +29,7 @@ window.onload = function() {
     }
 
     document.getElementById(`search_account`).onclick = function() {
-        let forms = getManageForms()
+        let forms = getForms(`manage`)
         initInputErrorforForm(forms)
         let inputId = forms.id.value
         if(inputId === ``) {
@@ -51,7 +51,7 @@ window.onload = function() {
     }
 
     document.getElementById(`update_account`).onclick = function() {
-        let forms = getManageForms()
+        let forms = getForms(`manage`)
         initInputErrorforForm(forms)
         let user = findUser(forms.id.value)
         if(user.idx === -1) {
@@ -68,7 +68,7 @@ window.onload = function() {
     }
 
     document.getElementById(`delete_account`).onclick = function() {
-        let forms = getManageForms()
+        let forms = getForms(`manage`)
         initInputErrorforForm(forms)
         let user = findUser(forms.id.value)
         if(user.idx === -1) {
@@ -95,27 +95,10 @@ window.onload = function() {
         return {idx: -1, user: null}
     }
 
-
-    // 아래와 같은 함수는 하나의 함수로 가능합니다. (향후 Join, Manage 외에 다른 값 필요 시에도 추가 함수구현 없이 활용 가능)
-    // 이렇게 거의 동일한 기능을 가진 함수들은 여러 개로 나누지 않는 게 더 유리할 수 있습니다.
-    /*
-    function getForms(type) {
+    function getForms(type){
         return {id: document.getElementById(`id_${type}`),
                 pw:  document.getElementById(`pw_${type}`), 
                 nick : document.getElementById(`nick_${type}`)};
-    }
-     */
-
-    function getJoinForms(){
-        return {id: document.getElementById(`id_join`),
-                pw:  document.getElementById(`pw_join`), 
-                nick : document.getElementById(`nick_join`)};
-    }
-
-    function getManageForms(){
-        return {id: document.getElementById(`id_manage`),
-                pw:  document.getElementById(`pw_manage`), 
-                nick : document.getElementById(`nick_manage`)};
     }
 
     function initInputForm(form) {
