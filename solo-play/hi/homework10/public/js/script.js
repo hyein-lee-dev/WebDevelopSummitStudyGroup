@@ -1,28 +1,31 @@
 // 공통사항 : 파라메터 유효성 여부는 필수로 합니다. (특히 객체 내 프로퍼티들을 접근할 때)
-
-// let UserList = null;
+const backendURL = `http://127.0.0.1:12345`;
 
 window.onload = function() {
     document.getElementById(`create_account`).onclick = function() {
         let forms = getJoinForms();
         initInputErrorforForm(forms)
         
-        try {
-            console.log(forms.id.value, "/", forms.pw.value, "/", forms.nick.value);
-            
-            //TODO : 멤버 생성대신에 요청보내기 !!!!!!!! (여기서부터) add api부터 테스트하고가자
-            let person = new Member({
-                id : forms.id.value,
-                pw : forms.pw.value,
-                nick: forms.nick.value
-            });
-            
-            // UserList.push(person)
-            alert(`${person.getId()} 계정이 생성되었습니다`)
-        } catch(e) {
-            handleInputErrorforForm(e, forms)
-        }
-        console.log(UserList)
+        console.log(forms.id.value, "/", forms.pw.value, "/", forms.nick.value);
+        
+        
+        new HttpRequest().postData(
+                `${backendURL}/member/add`, 
+                {
+                    id: forms.id.value,
+                    pw: forms.pw.value,
+                    nick: forms.nick.value
+                }, 
+                (res) => {
+                    console.log(`successs callback ${JSON.stringify(res)}`)
+                }, 
+                (res) => {
+                    console.log(`fail callback ${JSON.stringify(res)}`)
+                    if(res.error !== undefined && res.error !== null){
+                        handleInputErrorforForm(res.error, forms);
+                    }
+                }
+        );
     }
 
     document.getElementById(`search_account`).onclick = function() {
@@ -128,7 +131,7 @@ window.onload = function() {
     }
 
     function handleInputErrorforForm(e, form){
-        let errors = JSON.parse(e.message)
+        let errors = JSON.parse(e)
         for (let key in errors) {
             setGuideText(form[key], errors[key], true)
         }

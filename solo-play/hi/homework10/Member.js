@@ -4,7 +4,7 @@ class Member {
         console.log(JSON.stringify(param));
         let errors = Member.checkValidation(param);
         if(errors) {
-            console.log(errors);
+            console.log(`[Member.js] error occurs: ${errors}`);
             throw new Error(errors);
         }
 
